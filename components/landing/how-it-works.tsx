@@ -10,12 +10,15 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { StickyScrollCards } from "@/components/scroll/sticky-scroll-cards";
+
 const steps = [
   {
     number: "01",
     title: "Connect a repository",
     description:
       "Choose a GitHub repo. CodeNook installs a pull request webhook and indexes its files.",
+    tags: ["GitHub", "Repository context", "Repo access"],
     preview: RepositoryPreview,
   },
   {
@@ -23,6 +26,7 @@ const steps = [
     title: "Open a pull request",
     description:
       "Each new or updated PR is checked against the diff and relevant code from the repo.",
+    tags: ["Pull request diff", "Related files", "Code-aware review"],
     preview: DiffPreview,
   },
   {
@@ -30,6 +34,7 @@ const steps = [
     title: "Review it on GitHub",
     description:
       "Get a walkthrough, summary, strengths, issues, and suggestions in the pull request.",
+    tags: ["Walkthrough", "Potential issues", "Suggestions"],
     preview: ReviewPreview,
   },
 ];
@@ -38,7 +43,7 @@ function RepositoryPreview() {
   return (
     <div
       aria-hidden="true"
-      className="mx-auto w-full max-w-md overflow-hidden rounded-xl border border-white/10 bg-[#080d13]/95 text-left shadow-[0_18px_50px_-24px_rgba(0,0,0,0.9)]"
+      className="mx-auto w-full max-w-xl overflow-hidden rounded-xl border border-white/10 bg-[#080d13]/95 text-left shadow-[0_18px_50px_-24px_rgba(0,0,0,0.9)]"
     >
       <div className="flex items-center justify-between border-b border-white/8 px-4 py-1.5">
         <div className="flex items-center gap-2 text-[11px] font-medium text-white/80">
@@ -112,7 +117,7 @@ function DiffPreview() {
   return (
     <div
       aria-hidden="true"
-      className="mx-auto w-full max-w-sm overflow-hidden rounded-xl border border-white/10 bg-[#080d13]/95 text-left shadow-[0_18px_50px_-24px_rgba(0,0,0,0.9)]"
+      className="mx-auto w-full max-w-lg overflow-hidden rounded-xl border border-white/10 bg-[#080d13]/95 text-left shadow-[0_18px_50px_-24px_rgba(0,0,0,0.9)]"
     >
       <div className="flex items-center gap-2 border-b border-white/8 px-3 py-2.5">
         <GitPullRequest className="text-brand-blue size-3.5" />
@@ -172,7 +177,7 @@ function ReviewPreview() {
   return (
     <div
       aria-hidden="true"
-      className="mx-auto w-full max-w-sm overflow-hidden rounded-xl border border-white/10 bg-[#080d13]/95 text-left shadow-[0_18px_50px_-24px_rgba(0,0,0,0.9)]"
+      className="mx-auto w-full max-w-lg overflow-hidden rounded-xl border border-white/10 bg-[#080d13]/95 text-left shadow-[0_18px_50px_-24px_rgba(0,0,0,0.9)]"
     >
       <div className="flex items-center gap-2.5 border-b border-white/8 px-3 py-2.5">
         <span className="bg-brand-blue flex size-7 items-center justify-center rounded-lg text-white shadow-[0_4px_14px_-5px_var(--brand-blue)]">
@@ -235,9 +240,9 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       aria-labelledby="how-it-works-title"
-      className="px-5 py-12 sm:px-8 sm:py-12 lg:py-20"
+      className="px-5 py-14 sm:px-8 sm:py-16 lg:py-20"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-4xl text-center">
           <div className="border-brand-blue/20 bg-brand-blue/5 text-foreground mb-3 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium">
             <Sparkles aria-hidden="true" className="text-brand-blue size-3.5" />
@@ -256,47 +261,20 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <ol className="mt-10 grid gap-4 md:grid-cols-3">
-          {steps.map((step) => {
-            const Preview = step.preview;
+        <StickyScrollCards
+          className="mt-9 sm:mt-11"
+          cards={steps.map(({ number, title, description, tags, preview }) => {
+            const Preview = preview;
 
-            return (
-              <li
-                key={step.number}
-                className="group bg-background border-brand-blue/20 relative flex min-h-107.5 flex-col overflow-hidden rounded-lg border"
-              >
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[76%]"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse 105% 85% at 50% 0%, color-mix(in srgb, var(--brand-blue) 30%, transparent), transparent 73%)",
-                  }}
-                />
-                <div
-                  aria-hidden="true"
-                  className="to-background pointer-events-none absolute inset-x-0 top-[44%] bottom-34 z-10 bg-linear-to-b from-transparent"
-                />
-
-                <div className="relative z-0 flex min-h-63.75 flex-1 items-center justify-center px-4 pt-2 sm:min-h-68.75 sm:px-5">
-                  <Preview />
-                </div>
-
-                <div className="relative z-20 mt-auto px-5 pt-2 pb-6 sm:px-6 sm:pb-7">
-                  <div className="text-brand-blue mb-2 flex items-center gap-2 text-[10px] font-medium tracking-[0.12em]">
-                    STEP {step.number}
-                  </div>
-                  <h3 className="text-base font-semibold tracking-tight sm:text-lg">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground mt-2 max-w-sm text-sm leading-6 font-medium">
-                    {step.description}
-                  </p>
-                </div>
-              </li>
-            );
+            return {
+              step: number,
+              title,
+              description,
+              tags,
+              visual: <Preview />,
+            };
           })}
-        </ol>
+        />
       </div>
     </section>
   );
