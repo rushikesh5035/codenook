@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { ArrowUpRight, LayoutDashboard } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 
 import { Logo } from "@/components/common/logo";
 import { MobileNav } from "@/components/common/mobile-nav";
@@ -19,9 +20,18 @@ export const navLinks = [
 export function Header() {
   const { data: session } = useSession();
   const isAuthenticated = Boolean(session);
+  const reduceMotion = useReducedMotion() ?? false;
 
   return (
-    <header className="border-border/70 bg-background supports-backdrop-filter:bg-background/75 sticky top-0 z-50 border-b backdrop-blur-xl">
+    <motion.header
+      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: reduceMotion ? 0.18 : 0.45,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="border-border/70 bg-background supports-backdrop-filter:bg-background/75 sticky top-0 z-50 border-b backdrop-blur-xl"
+    >
       <nav
         aria-label="Main navigation"
         className="xl mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8"
@@ -67,6 +77,6 @@ export function Header() {
 
         <MobileNav isAuthenticated={isAuthenticated} />
       </nav>
-    </header>
+    </motion.header>
   );
 }

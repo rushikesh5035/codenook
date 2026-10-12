@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import {
@@ -11,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { BlurReveal } from "@/components/common/blur-reveal";
 import { HeroPrimaryCTA } from "@/components/landing/hero-primary-cta";
 import { Button } from "@/components/ui/button";
 
@@ -21,20 +24,20 @@ export function Hero() {
         {/* Blue Spotlight Background */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-190 md:inset-0 md:h-auto"
+          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-220 md:inset-0 md:h-180"
           style={{
             background: `
               radial-gradient(
-                ellipse 48% 38% at 50% 50%,
-                rgba(5, 143, 255, 0.28) 0%,
-                rgba(5, 143, 255, 0.16) 34%,
-                rgba(5, 143, 255, 0.05) 68%,
+                ellipse 44% 48% at 50% 50%,
+                rgba(5, 143, 255, 0.52) 0%,
+                rgba(5, 143, 255, 0.24) 34%,
+                rgba(5, 143, 255, 0.08) 68%,
                 transparent 100%
               ),
               radial-gradient(
                 ellipse 68% 52% at 50% 60%,
-                rgba(5, 143, 255, 0.11) 0%,
                 rgba(5, 143, 255, 0.025) 64%,
+                rgba(5, 143, 255, 0.045) 64%,
                 transparent 100%
               )
             `,
@@ -53,9 +56,14 @@ export function Hero() {
               />
             </div>
 
-            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-balance lg:text-4xl">
+            <BlurReveal
+              as="h2"
+              className="text-3xl font-semibold tracking-[-0.03em] text-balance lg:text-4xl"
+              inView
+              speedReveal={1.5}
+            >
               AI code reviews that understand the code around the change
-            </h2>
+            </BlurReveal>
 
             <p className="text-muted-foreground mx-auto mt-6 max-w-xl text-base leading-7 text-pretty sm:text-lg">
               CodeNook reviews pull requests with context from your entire
