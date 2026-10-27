@@ -325,7 +325,7 @@ export const postReviewComment = async (
       owner,
       repo,
       issue_number: pullRequestNumber,
-      body: `###🤖 AI Code Review \n\n${review} \n\n *Powered by Anvaya*`,
+      body: `###🤖 AI Code Review \n\n${review} \n\n *Powered by CodeNook*`,
     });
   } catch (error) {
     console.error("Error posting review comment:", error);

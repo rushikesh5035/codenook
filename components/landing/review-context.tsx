@@ -70,19 +70,6 @@ export function ReviewContext() {
             ))}
           </ol>
         </div>
-
-        <div className="text-muted-foreground mt-4 mb-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-5 text-xs sm:mb-2">
-          <span>
-            Built with <span className="text-foreground/80">Next.js</span>
-          </span>
-          <span
-            aria-hidden="true"
-            className="bg-border hidden h-3.5 w-px sm:block"
-          />
-          <span>
-            Billing by <span className="text-foreground/80">Polar</span>
-          </span>
-        </div>
       </div>
     </section>
   );

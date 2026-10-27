@@ -7,7 +7,7 @@ export function FinalCTA() {
       className="px-5 pt-4 pb-14 sm:px-8 sm:pb-16 lg:pb-20"
     >
       <div
-        className="border-brand-blue/20 relative isolate mx-auto max-w-7xl overflow-hidden rounded-2xl border px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14"
+        className="border-brand-blue/20 relative isolate mx-auto max-w-6xl overflow-hidden rounded-2xl border px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14"
         style={{
           background:
             "radial-gradient(ellipse 55% 120% at 100% 0%, rgba(5,143,255,0.22), transparent 72%), linear-gradient(110deg, rgba(5,143,255,0.12), rgba(5,143,255,0.035) 58%, rgba(3,7,12,0.92))",
