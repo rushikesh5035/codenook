@@ -1,5 +1,7 @@
 import { Faq } from "@/components/landing/faq";
 import { Features } from "@/components/landing/features";
+import { FinalCTA } from "@/components/landing/final-cta";
+import { Footer } from "@/components/landing/footer";
 import { Header } from "@/components/landing/header";
 import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
@@ -17,7 +19,9 @@ export default function Home() {
         <Features />
         <Pricing />
         <Faq />
+        <FinalCTA />
       </main>
+      <Footer />
     </>
   );
 }
