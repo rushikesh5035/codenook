@@ -28,6 +28,7 @@
     "@shadcn/react": "^0.2.1",
     "@tabler/icons-react": "^3.46.0",
     "@tanstack/react-query": "^5.101.4",
+    "@vercel/analytics": "^2.0.1",
     "ai": "^7.0.90",
     "better-auth": "^1.6.27",
     "class-variance-authority": "^0.7.1",
