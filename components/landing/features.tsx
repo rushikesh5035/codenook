@@ -409,22 +409,6 @@ export function Features() {
                 key={title}
                 className={`border-brand-blue/20 bg-background relative isolate flex min-h-87.5 min-w-0 flex-col overflow-hidden rounded-lg border p-5 sm:min-h-92.5 sm:p-6 lg:p-7 ${className}`}
               >
-                {/* <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-0"
-                style={{
-                  background: `radial-gradient(ellipse 92% 78% at 50% 0%, color-mix(in srgb, var(--brand-blue) 34%, transparent) 0%, color-mix(in srgb, var(--brand-blue) 15%, transparent) 47%, transparent 82%), #03070b`,
-                }}
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-10"
-                style={{
-                  background:
-                    "linear-gradient(to top, #03070b 0%, rgb(3 7 11 / 0.98) 18%, rgb(3 7 11 / 0.82) 34%, rgb(3 7 11 / 0.35) 53%, transparent 76%)",
-                }}
-              /> */}
-
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[76%]"
