@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/next";
@@ -23,10 +23,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const appBaseUrl =
+  process.env.NEXT_PUBLIC_APP_BASE_URL ?? "http://localhost:3000";
+
+const siteTitle = "CodeNook — AI code reviews for your GitHub pull requests";
+const siteDescription =
+  "CodeNook reviews GitHub pull requests with context from your repository and posts a clear walkthrough, potential issues, and actionable suggestions right on GitHub.";
+
 export const metadata: Metadata = {
-  title: "CodeNook — AI code reviews for your GitHub pull requests",
-  description:
-    "Codenook reviews every pull request with full context of your codebase and posts a clear walkthrough, potential issues, and actionable suggestions right on GitHub.",
+  metadataBase: new URL(appBaseUrl),
+  title: siteTitle,
+  description: siteDescription,
+  applicationName: "CodeNook",
+  openGraph: {
+    type: "website",
+    siteName: "CodeNook",
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0d1117",
 };
 
 export default function RootLayout({
@@ -51,8 +75,7 @@ export default function RootLayout({
         <QueryProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
-            enableSystem
+            forcedTheme="dark"
             disableTransitionOnChange
           >
             <TooltipProvider>

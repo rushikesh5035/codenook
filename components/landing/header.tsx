@@ -3,38 +3,22 @@
 import Link from "next/link";
 
 import { ArrowUpRight, LayoutDashboard } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
 
 import { Logo } from "@/components/common/logo";
 import { MobileNav } from "@/components/common/mobile-nav";
 import { Button } from "@/components/ui/button";
+import { navLinks } from "@/config/navigation";
 import { useSession } from "@/lib/auth-client";
-
-export const navLinks = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-];
 
 export function Header() {
   const { data: session } = useSession();
   const isAuthenticated = Boolean(session);
-  const reduceMotion = useReducedMotion() ?? false;
 
   return (
-    <motion.header
-      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: reduceMotion ? 0.18 : 0.45,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="border-border/70 bg-background supports-backdrop-filter:bg-background/75 sticky top-0 z-50 border-b backdrop-blur-xl"
-    >
+    <header className="border-border/70 bg-background supports-backdrop-filter:bg-background/75 sticky top-0 z-50 border-b backdrop-blur-xl">
       <nav
         aria-label="Main navigation"
-        className="xl mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8"
+        className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8"
       >
         <div className="flex flex-1 items-center">
           <Link aria-label="codenook home" href="/">
@@ -77,6 +61,6 @@ export function Header() {
 
         <MobileNav isAuthenticated={isAuthenticated} />
       </nav>
-    </motion.header>
+    </header>
   );
 }

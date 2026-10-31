@@ -7,8 +7,8 @@ import Link from "next/link";
 import { ArrowUpRight, LayoutDashboard, MenuIcon, XIcon } from "lucide-react";
 
 import { Portal, PortalBackdrop } from "@/components/common/portal";
-import { navLinks } from "@/components/landing/header";
 import { Button } from "@/components/ui/button";
+import { navLinks } from "@/config/navigation";
 import { cn } from "@/lib/utils";
 
 export function MobileNav({

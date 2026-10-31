@@ -39,7 +39,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="text-muted-foreground mt-7 flex flex-col gap-2 border-t border-white/10 pt-5 text-xs sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-muted-foreground border-border/70 mt-7 flex flex-col gap-2 border-t pt-5 text-xs sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 CodeNook</p>
           <p>Built for developers who care about the code around the change.</p>
         </div>
